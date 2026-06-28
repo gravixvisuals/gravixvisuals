@@ -178,7 +178,9 @@
   footer .brand{margin-bottom:18px}
   .foot-about{font-size:14px;color:var(--muted);max-width:320px}
   .foot-col h5{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-  .foot-col a{display:block;text-decoration:none;color:var(--muted);padding:6px 0;font-size:14px;transition:color .2s,transform .2s;transform:translateX(0)}
+  .foot-col a{position:relative;display:block;width:fit-content;text-decoration:none;color:var(--muted);padding:6px 0;font-size:14px;transition:color .2s,transform .2s;transform:translateX(0)}
+  .foot-col a:not(.ig-link)::after{content:'';position:absolute;left:0;bottom:2px;height:1.5px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+  .foot-col a:not(.ig-link):hover::after{transform:scaleX(1)}
   .foot-col a:hover{color:var(--white);transform:translateX(6px)}
   .foot-col a.ig-link:hover{transform:translateY(-1px)}
   .foot-bottom{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--muted-2)}
