@@ -39,7 +39,9 @@
   .brand .word .vis .ln{height:1px;width:14px;background:var(--white);opacity:.5}
   .brand .word .vis small{font-size:9px;letter-spacing:0.42em;color:var(--muted)}
   .nav-links{display:flex;align-items:center;gap:36px}
-  .nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text);opacity:.85;transition:opacity .2s,color .2s}
+  .nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text);opacity:.85;transition:opacity .2s,color .2s;position:relative}
+  .nav-links a:not(.nav-cta)::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1.5px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+  .nav-links a:not(.nav-cta):hover::after{transform:scaleX(1)}
   .nav-links a:hover{opacity:1;color:var(--gold)}
   .nav-cta{border:1px solid var(--line);padding:11px 20px;border-radius:999px;font-size:13px;font-weight:600;transition:all .25s}
   .nav-cta:hover{background:var(--white);color:#0A0A0A!important;border-color:var(--white);opacity:1!important}
@@ -176,8 +178,9 @@
   footer .brand{margin-bottom:18px}
   .foot-about{font-size:14px;color:var(--muted);max-width:320px}
   .foot-col h5{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-  .foot-col a{display:block;text-decoration:none;color:var(--muted);padding:6px 0;font-size:14px;transition:color .2s}
-  .foot-col a:hover{color:var(--white)}
+  .foot-col a{display:block;text-decoration:none;color:var(--muted);padding:6px 0;font-size:14px;transition:color .2s,transform .2s;transform:translateX(0)}
+  .foot-col a:hover{color:var(--white);transform:translateX(6px)}
+  .foot-col a.ig-link:hover{transform:translateY(-1px)}
   .foot-bottom{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--muted-2)}
 
   /* ---------- RESPONSIVE ---------- */
@@ -247,12 +250,19 @@ nav.solid{background:rgba(7,9,14,0.82);backdrop-filter:blur(14px);border-bottom:
 }
 .foot-col .ig-link:hover{color:var(--gold);border-color:var(--gold);background:rgba(217,188,133,.06);transform:translateY(-1px)}
 .foot-col .ig-link svg{display:block}
-.foot-col .email-link{
-  display:flex;align-items:center;gap:9px;font-size:14px;color:var(--muted);text-decoration:none;
-  padding:6px 0;word-break:break-all;transition:color .2s;
+.foot-col .email-line{
+  display:flex;align-items:center;gap:9px;font-size:14px;color:var(--muted);
+  padding:6px 0;flex-wrap:wrap;
 }
-.foot-col .email-link svg{flex:none;color:var(--gold)}
-.foot-col .email-link:hover{color:var(--gold)}
+.foot-col .email-line svg{flex:none;color:var(--gold)}
+.foot-col .email-text{user-select:all;-webkit-user-select:all;cursor:text;word-break:break-all}
+.copy-btn{
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;color:var(--gold);border:1px solid var(--line);border-radius:4px;
+  padding:4px 9px;cursor:pointer;transition:all .2s;
+}
+.copy-btn:hover{border-color:var(--gold);background:rgba(217,188,133,.08)}
+.copy-btn.copied{color:#7BC47F;border-color:#7BC47F}
 
 .foot-location{
   display:flex;align-items:center;gap:9px;margin-top:16px;

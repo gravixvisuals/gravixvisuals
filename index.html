@@ -170,13 +170,14 @@
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
           </svg>
         </a>
-        <a href="mailto:gravixvisualsyeg@gmail.com" class="email-link">
+        <div class="email-line">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="4" width="20" height="16" rx="2"/>
             <path d="m22 7-10 6L2 7"/>
           </svg>
-          <span>gravixvisualsyeg@gmail.com</span>
-        </a>
+          <span class="email-text" id="emailText">gravixvisualsyeg@gmail.com</span>
+          <button type="button" class="copy-btn" onclick="copyEmail(this)" aria-label="Copy email address">Copy</button>
+        </div>
       </div>
     </div>
     <div class="foot-bottom">
@@ -223,6 +224,17 @@
     document.getElementById('contactForm').style.display='none';
     document.getElementById('formSuccess').classList.add('show');
     return false;
+  }
+
+  function copyEmail(btn){
+    const email='gravixvisualsyeg@gmail.com';
+    const done=()=>{ const o=btn.textContent; btn.textContent='Copied!'; btn.classList.add('copied'); setTimeout(()=>{btn.textContent=o;btn.classList.remove('copied');},1600); };
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(email).then(done).catch(()=>fallbackCopy(email,done)); }
+    else { fallbackCopy(email,done); }
+  }
+  function fallbackCopy(text,cb){
+    const t=document.createElement('textarea'); t.value=text; t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t); if(cb)cb();
   }
 </script>
 </body>
