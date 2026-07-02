@@ -293,3 +293,11 @@ nav.solid{background:rgba(7,9,14,0.82);backdrop-filter:blur(14px);border-bottom:
   .values-grid{grid-template-columns:1fr}
   .value-card{padding:36px 28px}
 }
+
+/* Footer phone line — matches email styling */
+.foot-col .phone-line{
+  display:flex;align-items:center;gap:9px;font-size:14px;color:var(--muted);
+  text-decoration:none;padding:6px 0;transition:color .2s,transform .2s;
+}
+.foot-col .phone-line svg{flex:none;color:var(--gold)}
+.foot-col .phone-line:hover{color:var(--gold);transform:translateX(3px)}
