@@ -239,8 +239,26 @@
 
   function submitForm(e){
     e.preventDefault();
-    document.getElementById('contactForm').style.display='none';
-    document.getElementById('formSuccess').classList.add('show');
+    const form=document.getElementById('contactForm');
+    const btn=form.querySelector('button[type=submit]');
+    const orig=btn.innerHTML;
+    btn.disabled=true; btn.innerHTML='Sending...';
+    fetch('https://formspree.io/f/xjgqaqgn',{
+      method:'POST',
+      body:new FormData(form),
+      headers:{'Accept':'application/json'}
+    }).then(r=>{
+      if(r.ok){
+        form.style.display='none';
+        document.getElementById('formSuccess').classList.add('show');
+      } else {
+        btn.disabled=false; btn.innerHTML=orig;
+        alert('Something went wrong sending your message. Please email us directly at gravixvisualsyeg@gmail.com');
+      }
+    }).catch(()=>{
+      btn.disabled=false; btn.innerHTML=orig;
+      alert('Something went wrong sending your message. Please email us directly at gravixvisualsyeg@gmail.com');
+    });
     return false;
   }
 
